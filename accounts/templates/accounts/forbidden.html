@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}403 - {% trans "Forbidden" %}{% endblock %}
+{% block content %}
+    <h1>403</h1>
+    <p style="text-align: center;">{% trans "You do not have permission to access this page." %}</p>
+    <div class="button-vertical-container">
+        <a href="/" aria-label="{% trans 'Go to homepage' %}">
+            <button class="custom-button">
+                {% trans "Go to homepage" %}
+            </button>
+        </a>
+    </div>
+{% endblock %}

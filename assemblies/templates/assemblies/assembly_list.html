@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Assemblies" %}{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'accounts:index' %}">{% trans "Home" %}</a> &rsaquo;
+    {% trans "Assemblies" %}
+{% endblock %}
+
+{% block content %}
+<h2>{% trans "Assemblies" %}</h2>
+
+{% if assemblies %}
+    <div class="button-vertical-container">
+        {% for assembly in assemblies %}
+            <a href="{% url 'assemblies:assembly_detail' assembly.id %}">
+                <button class="custom-button">
+                    {{ assembly.title }}
+                    <small>{{ assembly.scheduled_at|date:'Y-m-d H:i'}}</small>
+                </button>
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>{% trans "No assemblies found." %}</p>
+{% endif %}
+{% endblock %}

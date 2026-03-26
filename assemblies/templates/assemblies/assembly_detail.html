@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ assembly.title }}{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'accounts:index' %}">{% trans "Home" %}</a> &rsaquo;
+    <a href="{% url 'assemblies:assembly_list' %}">{% trans "Assemblies" %}</a> &rsaquo;
+    {{ assembly.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ assembly.title }}</h1>
+    <p style="text-align: center">{{ assembly.scheduled_at|date:"d/m/Y H:i" }}</p>
+
+    {% if assembly.description %}
+        <p>{{ assembly.description|linebreaksbr }}</p>
+    {% endif %}
+
+    {% for agenda in agendas %}
+        <div class="w3-section">
+            <h2>{{ agenda.title }}</h2>
+            {% for question in agenda.questions.all %}
+                <div class="w3-card w3-margin-bottom">
+                    <p><b>{{ question.text }}</b></p>
+                    <p>
+                        {% if question.status == 'pending' %}
+                            <span class="w3-tag"
+                                  style="background-color: var(--neutral-bg); color: var(--button-text)">{% trans "Pending" %}</span>
+                        {% elif question.status == 'open' %}
+                            <span class="w3-tag"
+                                  style="background-color: var(--progressive-bg); color: var(--button-text)">{% trans "Open" %}</span>
+                        {% elif question.status == 'closed' %}
+                            <span class="w3-tag"
+                                  style="background-color: var(--destructive-bg); color: var(--button-text)">{% trans "Closed" %}</span>
+                        {% endif %}
+                    </p>
+                    {% if request.user.is_staff %}
+                        <div class="button-container" style="padding-bottom: 1em;">
+                            <a class="link"
+                               href="{% url 'voting:open_question' assembly.id question.id %}">{% trans "Open voting" %}</a>
+                            <a class="link"
+                               href="{% url 'voting:hang_question' assembly.id question.id %}">{% trans "Hang voting" %}</a>
+                            <a class="link"
+                               href="{% url 'voting:close_question' assembly.id question.id %}">{% trans "Close voting" %}</a>
+                        </div>
+                    {% endif %}
+                    <div class="button-container">
+                        {% if question.status == 'open' %}
+                            {% if question.id in voted_question_ids %}
+                                <a href="{% url 'voting:edit_vote' assembly.id question.id %}">
+                                    <button class="custom-blue-button">{% trans "Edit my vote" %}</button>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'voting:vote' assembly.id question.id %}">
+                                    <button class="custom-button">{% trans "Vote" %}</button>
+                                </a>
+                            {% endif %}
+                            <a href="{% url 'voting:results' assembly.id question.id %}">
+                                <button class="custom-button">{% trans "Results" %}</button>
+                            </a>
+                        {% elif question.status == 'closed' %}
+                            <button class="custom-grey-button" disabled>{% trans "Already voted" %}</button>
+                            <a href="{% url 'voting:results' assembly.id question.id %}">
+                                <button class="custom-button">{% trans "Results" %}</button>
+                            </a>
+                        {% else %}
+                            <button class="custom-grey-button"
+                                    disabled>{% trans "Voting has not started yet" %}</button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>{% trans "No questions for this agenda item." %}</p>
+            {% endfor %}
+        </div>
+    {% empty %}
+        <p>{% trans "No agenda items for this assembly." %}</p>
+    {% endfor %}
+    {% if request.user.is_staff %}
+        <div class="button-vertical-container">
+            <a href="{% url 'assemblies:audit_report' assembly.id %}">
+                <button type="button" class="custom-grey-button">{% trans "Download audit report" %}</button>
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

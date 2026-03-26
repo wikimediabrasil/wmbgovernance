@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "My profile" %}{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'accounts:index' %}">{% trans "Home" %}</a> &rsaquo;
+    {% trans "My profile" %}
+{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="w3-section">
+        <h2>{% trans "Personal information" %}</h2>
+        {% for field in form %}
+            <div class="w3-margin-bottom">
+                <label for="{{ field.id_for_label }}">
+                    <b>{{ field.label }}</b>
+                </label>
+                {{ field }}
+                {% if field.help_text %}
+                    <small id="{{ field.id_for_label }}_helptext">
+                        {{ field.help_text }}
+                    </small>
+                {% endif %}
+                {% if field.errors %}
+                    <span class="w3-text-red">{{ field.errors }}</span>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="button-container submit-button">
+        <a href="{% url 'accounts:index' %}">
+            <button type="button" class="custom-grey-button">{% trans "Cancel" %}</button>
+        </a>
+        <button type="submit" class="custom-button">{% trans "Save" %}</button>
+    </div>
+</form>
+{% endblock %}

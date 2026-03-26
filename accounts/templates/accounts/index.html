@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Homepage" %}{% endblock %}
+
+{% block breadcrumbs %}
+    {% trans "Home" %}
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>{% blocktrans %}Welcome, {{ user }}!{% endblocktrans %}</h1>
+        <p>{% trans "You are logged in as a member of Wikimedia Brasil." %}</p>
+        <p>{% trans "Here's what you can do in this space:" %}</p>
+        <div class="button-vertical-container">
+            <a href="{% url 'assemblies:assembly_list' %}" aria-label="{% trans "List assemblies" %}">
+                <button class="custom-blue-button">{% trans "Assemblies" %}</button>
+            </a>
+            <a href="{% url 'accounts:profile' %}" aria-label="View profile">
+                <button class="custom-blue-button">{% trans "My profile" %}</button>
+            </a>
+            <a href="{% url 'accounts:logout' %}" aria-label="{% trans 'Logout' %}">
+                <button class="custom-red-button">{% trans "Logout" %}</button>
+            </a>
+        </div>
+    {% else %}
+        <p>{% trans 'Welcome!' %}</p>
+        <p>{% trans "Please log in to access the governance platform." %}</p>
+        <div class="button-vertical-container">
+            <a href="{% url 'accounts:login' %}" aria-label="{% trans 'Login with your Wikimedia account' %}">
+                <button class="custom-button">
+                    {% trans "Log in with Wikimedia" %}
+                </button>
+            </a>
+        </div>
+    {% endif %}
+{% endblock %}

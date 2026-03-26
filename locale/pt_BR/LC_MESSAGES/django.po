@@ -1,0 +1,657 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: <eder.porto@wmnobrasil.org\n"
+"POT-Creation-Date: 2026-03-26 04:12-0300\n"
+"PO-Revision-Date: 2026-03-26 04:12-0300\n"
+"Last-Translator: ÉDER PORTO <EDER.PORTO@WMNOBRASIL.ORG>\n"
+"Language-Team: PT-BR <LL@li.org>\n"
+"Language: PT-BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\accounts\forms.py:14
+msgid "Display name"
+msgstr "Nome"
+
+#: .\accounts\forms.py:15
+msgid "Email"
+msgstr "E-mail"
+
+#: .\accounts\forms.py:16
+msgid "Phone"
+msgstr "Telefone"
+
+#: .\accounts\forms.py:17 .\accounts\models.py:17
+msgid "Address"
+msgstr "Endereço"
+
+#: .\accounts\forms.py:18 .\accounts\models.py:18
+msgid "City"
+msgstr "Cidade"
+
+#: .\accounts\forms.py:19 .\accounts\models.py:19
+msgid "State"
+msgstr "Estado"
+
+#: .\accounts\forms.py:20 .\accounts\models.py:20
+msgid "Postal code"
+msgstr "CEP"
+
+#: .\accounts\forms.py:21 .\accounts\models.py:21
+msgid "Country"
+msgstr "País"
+
+#: .\accounts\models.py:14 .\assemblies\models.py:36
+msgid "Name"
+msgstr "Nome"
+
+#: .\accounts\models.py:14
+msgid "Your name"
+msgstr "Seu nome"
+
+#: .\accounts\models.py:15
+msgid "Email address"
+msgstr "Endereço de e-mail"
+
+#: .\accounts\models.py:15
+msgid "Your email address. e.g.: email@email.com"
+msgstr "Seu endereço de e-mail. Ex.: email@email.com"
+
+#: .\accounts\models.py:16
+msgid "Telephone number"
+msgstr "Número de telefone"
+
+#: .\accounts\models.py:16
+msgid "Your telephone number, with DDD or DDI"
+msgstr "Seu número de telefone, com DDD ou DDI"
+
+#: .\accounts\models.py:17
+msgid ""
+"Your address for correspondences. e.g.: Avenida Paulista, 2278, andar "
+"Pilotis - Bela Vista"
+msgstr ""
+"Seu endereço para correspondência. Ex.: Avenida Paulista, 2278, andar "
+"Pilotis - Bela Vista"
+
+#: .\accounts\models.py:18
+msgid "The city you are residing. e.g.: São Paulo"
+msgstr "A cidade onde você reside. Ex.: São Paulo"
+
+#: .\accounts\models.py:19
+msgid "The state you are residing. e.g.: São Paulo"
+msgstr "O estado onde você reside. Ex.: São Paulo"
+
+#: .\accounts\models.py:20
+msgid "The postal code of your address. e.g.:01.310-300"
+msgstr "O CEP do seu endereço. Ex.: 01.310-300"
+
+#: .\accounts\models.py:21
+msgid "The country you are residing. e.g.: Brazil"
+msgstr "O país no qual você reside. Ex.: Brasil"
+
+#: .\accounts\models.py:24
+msgid "Profile"
+msgstr "Perfil"
+
+#: .\accounts\models.py:25
+msgid "Profiles"
+msgstr "Perfis"
+
+#: .\accounts\templates\accounts\forbidden.html:4
+msgid "Forbidden"
+msgstr "Acesso negado"
+
+#: .\accounts\templates\accounts\forbidden.html:7
+msgid "You do not have permission to access this page."
+msgstr "Você não tem permissão para acessar esta página."
+
+#: .\accounts\templates\accounts\forbidden.html:9
+#: .\accounts\templates\accounts\forbidden.html:11
+msgid "Go to homepage"
+msgstr "Ir para a página inicial"
+
+#: .\accounts\templates\accounts\index.html:6 .\templates\navbar.html:7
+msgid "Homepage"
+msgstr "Página inicial"
+
+#: .\accounts\templates\accounts\index.html:9
+#: .\accounts\templates\accounts\profile.html:7
+#: .\assemblies\templates\assemblies\assembly_detail.html:7
+#: .\assemblies\templates\assemblies\assembly_list.html:7
+#: .\voting\templates\voting\change_vote.html:7
+#: .\voting\templates\voting\results.html:7
+#: .\voting\templates\voting\vote.html:7
+msgid "Home"
+msgstr "Início"
+
+#: .\accounts\templates\accounts\index.html:14
+#, python-format
+msgid "Welcome, %(user)s!"
+msgstr "Bem-vindo(a), %(user)s!"
+
+#: .\accounts\templates\accounts\index.html:15
+msgid "You are logged in as a member of Wikimedia Brasil."
+msgstr "Você está logado como membro(a) do Wikimedia Brasil."
+
+#: .\accounts\templates\accounts\index.html:16
+msgid "Here's what you can do in this space:"
+msgstr "Veja o que você pode fazer neste espaço:"
+
+#: .\accounts\templates\accounts\index.html:18
+msgid "List assemblies"
+msgstr "Listar assembleias"
+
+#: .\accounts\templates\accounts\index.html:19 .\assemblies\models.py:13
+#: .\assemblies\templates\assemblies\assembly_detail.html:8
+#: .\assemblies\templates\assemblies\assembly_list.html:4
+#: .\assemblies\templates\assemblies\assembly_list.html:8
+#: .\assemblies\templates\assemblies\assembly_list.html:12
+#: .\voting\templates\voting\change_vote.html:8
+#: .\voting\templates\voting\results.html:8
+#: .\voting\templates\voting\vote.html:8
+msgid "Assemblies"
+msgstr "Assembleias"
+
+#: .\accounts\templates\accounts\index.html:22
+#: .\accounts\templates\accounts\profile.html:4
+#: .\accounts\templates\accounts\profile.html:8
+msgid "My profile"
+msgstr "Meu perfil"
+
+#: .\accounts\templates\accounts\index.html:24
+#: .\accounts\templates\accounts\index.html:25 .\templates\navbar.html:29
+#: .\templates\navbar.html:31
+msgid "Logout"
+msgstr "Sair"
+
+#: .\accounts\templates\accounts\index.html:29
+msgid "Welcome!"
+msgstr "Bem-vindo(a)!"
+
+#: .\accounts\templates\accounts\index.html:30
+msgid "Please log in to access the governance platform."
+msgstr "Por favor, faça login para acessar a plataforma de governança."
+
+#: .\accounts\templates\accounts\index.html:32
+msgid "Login with your Wikimedia account"
+msgstr "Entrar com sua conta Wikimedia"
+
+#: .\accounts\templates\accounts\index.html:34
+msgid "Log in with Wikimedia"
+msgstr "Logar via Wikimedia"
+
+#: .\accounts\templates\accounts\profile.html:16
+msgid "Personal information"
+msgstr "Informações pessoais"
+
+#: .\accounts\templates\accounts\profile.html:37
+#: .\voting\templates\voting\change_vote.html:62
+#: .\voting\templates\voting\vote.html:57
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: .\accounts\templates\accounts\profile.html:39
+msgid "Save"
+msgstr "Salvar"
+
+#: .\assemblies\models.py:7 .\assemblies\models.py:23
+msgid "Title"
+msgstr "Título"
+
+#: .\assemblies\models.py:7
+msgid "Title of the assembly."
+msgstr "Título da assembleia."
+
+#: .\assemblies\models.py:8 .\assemblies\models.py:37
+msgid "Description"
+msgstr "Descrição"
+
+#: .\assemblies\models.py:8
+msgid "Description of the assembly."
+msgstr "Descrição da assembleia."
+
+#: .\assemblies\models.py:9
+msgid "Scheduled at"
+msgstr "Agendada para"
+
+#: .\assemblies\models.py:12
+msgid "Assembly"
+msgstr "Assembleia"
+
+#: .\assemblies\models.py:18
+#, python-format
+msgid "%(title)s (%(scheduled_at)s)"
+msgstr "%(title)s (%(scheduled_at)s)"
+
+#: .\assemblies\models.py:23
+msgid "Title of the agenda item."
+msgstr "Título do item da pauta."
+
+#: .\assemblies\models.py:24 .\assemblies\models.py:50
+#: .\assemblies\models.py:70
+msgid "Order"
+msgstr "Ordem"
+
+#: .\assemblies\models.py:24
+msgid "Order of the agenda item."
+msgstr "Ordem do item da pauta."
+
+#: .\assemblies\models.py:27
+msgid "Agenda"
+msgstr "Pauta"
+
+#: .\assemblies\models.py:28
+msgid "Agendas"
+msgstr "Pautas"
+
+#: .\assemblies\models.py:36
+msgid "Name of the decision option set"
+msgstr "Nome do conjunto de opções de decisão"
+
+#: .\assemblies\models.py:37
+msgid "Description of the decision option set."
+msgstr "Descrição do conjunto de opções de decisão."
+
+#: .\assemblies\models.py:40
+msgid "Decision option set"
+msgstr "Conjunto de opções de decisão"
+
+#: .\assemblies\models.py:41
+msgid "Decision option sets"
+msgstr "Conjuntos de opções de decisão"
+
+#: .\assemblies\models.py:49
+msgid "Label"
+msgstr "Rótulo"
+
+#: .\assemblies\models.py:49
+msgid "label for this option"
+msgstr "rótulo para esta opção"
+
+#: .\assemblies\models.py:50
+msgid "Order of the option"
+msgstr "Ordem da opção"
+
+#: .\assemblies\models.py:53
+msgid "Decision option"
+msgstr "Opção de decisão"
+
+#: .\assemblies\models.py:54
+msgid "Decision options"
+msgstr "Opções de decisão"
+
+#: .\assemblies\models.py:63
+msgid "Waiting"
+msgstr "Aguardando"
+
+#: .\assemblies\models.py:64 .\assemblies\models.py:73
+msgid "Opened"
+msgstr "Aberta"
+
+#: .\assemblies\models.py:65 .\assemblies\models.py:74
+#: .\assemblies\templates\assemblies\assembly_detail.html:35
+msgid "Closed"
+msgstr "Encerrada"
+
+#: .\assemblies\models.py:69
+msgid "Text"
+msgstr "Texto"
+
+#: .\assemblies\models.py:69
+msgid "Question text."
+msgstr "Texto da pergunta."
+
+#: .\assemblies\models.py:70
+msgid "Order of the question."
+msgstr "Ordem da pergunta."
+
+#: .\assemblies\models.py:71
+msgid "Status"
+msgstr "Status"
+
+#: .\assemblies\models.py:71
+msgid "Status of the question."
+msgstr "Status da questão."
+
+#: .\assemblies\models.py:73
+msgid "When this question was opened."
+msgstr "Quando esta questão foi aberta."
+
+#: .\assemblies\models.py:74
+msgid "When this question was closed."
+msgstr "Quando esta questão foi encerrada."
+
+#: .\assemblies\models.py:77
+msgid "Question"
+msgstr "Pergunta"
+
+#: .\assemblies\models.py:78
+msgid "Questions"
+msgstr "Perguntas"
+
+#: .\assemblies\models.py:88
+msgid "Registered at"
+msgstr "Registrado(a) em"
+
+#: .\assemblies\models.py:88
+msgid "When this attendance was registered."
+msgstr "Quando esta presença foi registrada."
+
+#: .\assemblies\models.py:89
+msgid "Was it registered by an admin?"
+msgstr "Foi registrado por um(a) administrador(a)?"
+
+#: .\assemblies\models.py:89
+msgid "Whether this attendance was registered by an admin."
+msgstr "Se esta presença foi registrada por um administrador."
+
+#: .\assemblies\models.py:93
+msgid "Attendance"
+msgstr "Presença"
+
+#: .\assemblies\models.py:94
+msgid "Attendances"
+msgstr "Presenças"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:29
+msgid "Pending"
+msgstr "Pendente"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:32
+msgid "Open"
+msgstr "Aberta"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:41
+msgid "Open voting"
+msgstr "Abrir votação"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:43
+msgid "Hang voting"
+msgstr "Suspender votação"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:45
+msgid "Close voting"
+msgstr "Encerrar votação"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:52
+msgid "Edit my vote"
+msgstr "Editar meu voto"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:56
+#: .\voting\templates\voting\vote.html:4 .\voting\templates\voting\vote.html:10
+msgid "Vote"
+msgstr "Votar"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:60
+#: .\assemblies\templates\assemblies\assembly_detail.html:65
+#: .\voting\templates\voting\results.html:4
+#: .\voting\templates\voting\results.html:10
+msgid "Results"
+msgstr "Resultados"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:63
+msgid "Already voted"
+msgstr "Já votei"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:69
+msgid "Voting has not started yet"
+msgstr "A votação ainda não começou"
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:74
+msgid "No questions for this agenda item."
+msgstr "Não há perguntas para este item da pauta."
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:78
+msgid "No agenda items for this assembly."
+msgstr "Não há itens de pauta para esta assembleia."
+
+#: .\assemblies\templates\assemblies\assembly_detail.html:83
+msgid "Download audit report"
+msgstr "Baixar relatório de auditoria"
+
+#: .\assemblies\templates\assemblies\assembly_list.html:26
+msgid "No assemblies found."
+msgstr "Nenhuma assembleia encontrada."
+
+#: .\auditlog\models.py:10
+msgid "Vote cast"
+msgstr "Voto registrado"
+
+#: .\auditlog\models.py:11
+msgid "Vote edited"
+msgstr "Voto editado"
+
+#: .\auditlog\models.py:12
+msgid "Question opened"
+msgstr "Questão aberta"
+
+#: .\auditlog\models.py:13
+msgid "Question closed"
+msgstr "Questão encerrada"
+
+#: .\auditlog\models.py:14
+msgid "User login"
+msgstr "Login do(a) usuário(a)"
+
+#: .\auditlog\models.py:26
+msgid "Audit entry"
+msgstr "Registro de auditoria"
+
+#: .\auditlog\models.py:27
+msgid "Audit entries"
+msgstr "Registros de auditoria"
+
+#: .\members\models.py:9
+msgid "Wiki username"
+msgstr "Nome de usuário(a) da wiki"
+
+#: .\members\models.py:12 .\voting\templates\voting\results.html:57
+msgid "Member"
+msgstr "Membro(a)"
+
+#: .\members\models.py:13
+msgid "Members"
+msgstr "Membros(as)"
+
+#: .\members\models.py:20
+msgid "Associate"
+msgstr "Associado(a)"
+
+#: .\members\models.py:20
+msgid "Senior"
+msgstr "Sênior"
+
+#: .\members\models.py:34 .\members\tests_members\test_models.py:55
+#, python-format
+msgid "%(member)s — %(type)s (since %(start)s)"
+msgstr "%(member)s — %(type)s (desde %(start)s)"
+
+#: .\members\models.py:35 .\members\tests_members\test_models.py:47
+#, python-format
+msgid "%(member)s — %(type)s (%(start)s to %(end)s)"
+msgstr "%(member)s — %(type)s (%(start)s até %(end)s)"
+
+#: .\members\models.py:45
+msgid "Default Period"
+msgstr "Período de inadimplência"
+
+#: .\members\models.py:46
+msgid "Default Periods"
+msgstr "Períodos de inadimplência"
+
+#: .\members\models.py:54
+#, python-format
+msgid "%(member)s — %(start_date)s to %(end_date)s"
+msgstr "%(member)s — %(start_date)s até %(end_date)s"
+
+#: .\templates\base.html:30 .\templates\navbar.html:8
+msgid "Logo for the project"
+msgstr "Logotipo do projeto"
+
+#: .\templates\base.html:36
+msgid "This app was developed by Wikimedia Brasil."
+msgstr "Este aplicativo foi desenvolvido pela Wikimedia Brasil."
+
+#: .\templates\i18n.html:7
+msgid "Language"
+msgstr "Idioma"
+
+#: .\templates\navbar.html:9
+msgid "WMB"
+msgstr "WMB"
+
+#: .\templates\navbar.html:22 .\templates\navbar.html:24
+msgid "Login"
+msgstr "Entrar"
+
+#: .\voting\forms.py:24
+msgid "Choose an option"
+msgstr "Escolha uma opção"
+
+#: .\voting\forms.py:43
+msgid "Voting on behalf of"
+msgstr "Votando em nome de"
+
+#: .\voting\forms.py:45
+#, python-format
+msgid "Myself (%(name)s)"
+msgstr "Eu mesmo (%(name)s)"
+
+#: .\voting\forms.py:46
+#, python-format
+msgid "On behalf of %(name)s"
+msgstr "Em nome de %(name)s"
+
+#: .\voting\models.py:13 .\voting\templates\voting\results.html:60
+msgid "Proxy"
+msgstr "Procuração"
+
+#: .\voting\models.py:14
+msgid "Proxies"
+msgstr "Procurações"
+
+#: .\voting\models.py:23
+#, python-format
+msgid ""
+"%(grantee)s is a grantee in this assembly and therefore cannot be a grantor"
+msgstr ""
+"%(grantee)s é procurador(a) nesta assembleia e, portanto, não pode ser outorgante"
+
+#: .\voting\models.py:27
+#, python-format
+msgid ""
+"%(grantor)s is already a grantor in this assembly and therefore cannot be a "
+"grantee."
+msgstr ""
+"%(grantor)s já é outorgante nesta assembleia e, portanto, não pode ser procurador(a)."
+
+#: .\voting\models.py:31
+#, python-format
+msgid "%(grantee)s represents %(grantor)s in %(assembly)s"
+msgstr "%(grantee)s representa %(grantor)s em %(assembly)s"
+
+#: .\voting\models.py:63
+msgid "This question is not open for voting yet."
+msgstr "Esta pergunta ainda não está aberta para votação."
+
+#: .\voting\models.py:65
+msgid "Invalid option for this question."
+msgstr "Opção inválida para esta pergunta."
+
+#: .\voting\models.py:67
+msgid "Member is in default, and therefore can not vote."
+msgstr "O(A) membro(a) está inadimplente e, portanto, não pode votar."
+
+#: .\voting\models.py:70
+msgid "This proxy is not valid for this assembly."
+msgstr "Esta procuração não é válida para esta assembleia."
+
+#: .\voting\models.py:72
+msgid "You are not the designated grantee"
+msgstr "Você não é o(a) procurador(a) designado(a)"
+
+#: .\voting\templates\voting\change_vote.html:4
+#: .\voting\templates\voting\change_vote.html:10
+msgid "Edit vote"
+msgstr "Editar voto"
+
+#: .\voting\templates\voting\change_vote.html:17
+msgid "You can change your vote below."
+msgstr "Você pode alterar seu voto abaixo."
+
+#: .\voting\templates\voting\change_vote.html:43
+msgid "Change your option"
+msgstr "Altere sua opção"
+
+#: .\voting\templates\voting\change_vote.html:64
+msgid "Update vote"
+msgstr "Atualizar voto"
+
+#: .\voting\templates\voting\results.html:29
+msgid "Results are live and update every 10 seconds."
+msgstr "Os resultados são em tempo real e atualizados a cada 10 segundos."
+
+#: .\voting\templates\voting\results.html:34
+msgid "Total votes:"
+msgstr "Total de votos:"
+
+#: .\voting\templates\voting\results.html:35
+msgid "Total senior votes:"
+msgstr "Total de votos seniores:"
+
+#: .\voting\templates\voting\results.html:39
+msgid "votes"
+msgstr "votos"
+
+#: .\voting\templates\voting\results.html:39
+msgid "Senior members:"
+msgstr "Membros(as) seniores"
+
+#: .\voting\templates\voting\results.html:53
+msgid "Public voting record"
+msgstr "Registro 'público' de votação"
+
+#: .\voting\templates\voting\results.html:58
+msgid "Voted for"
+msgstr "Votou por"
+
+#: .\voting\templates\voting\results.html:59
+msgid "Option"
+msgstr "Opção"
+
+#: .\voting\templates\voting\results.html:61
+msgid "Cast at"
+msgstr "Votado em"
+
+#: .\voting\templates\voting\results.html:81
+msgid "No votes yet."
+msgstr "Nenhum voto ainda."
+
+#: .\voting\templates\voting\results.html:90
+msgid "Back to assembly"
+msgstr "Voltar à pauta"
+
+#: .\voting\templates\voting\vote.html:38
+msgid "Select an option"
+msgstr "Selecione uma opção"
+
+#: .\voting\templates\voting\vote.html:59
+msgid "Submit vote"
+msgstr "Votar"
+
+#: .\wmb_governance\settings.py:137
+msgid "English"
+msgstr "Inglês"
+
+#: .\wmb_governance\settings.py:138
+msgid "Brazilian Portuguese"
+msgstr "Português"

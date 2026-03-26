@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Vote" %}{% endblock %}
+
+{% block breadcrumbs %}
+    <a href="{% url 'accounts:index' %}">{% trans "Home" %}</a> &rsaquo;
+    <a href="{% url 'assemblies:assembly_list' %}">{% trans "Assemblies" %}</a> &rsaquo;
+    <a href="{% url 'assemblies:assembly_detail' assembly.id %}">{{ assembly.title }}</a> &rsaquo;
+    {% trans "Vote" %}
+{% endblock %}
+{% block banner %}{% endblock %}
+{% block content %}
+    <h1>{{ question.text }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.on_behalf_of %}
+            <div class="w3-section">
+                <p><b>{{ form.on_behalf_of.label }}</b></p>
+                {% for radio in form.on_behalf_of %}
+                    <div class="w3-margin-bottom">
+                        <label class="w3-radio">
+                            {{ radio.tag }}
+                            <span class="w3-padding-small">{{ radio.choice_label }}</span>
+                        </label>
+                    </div>
+                {% endfor %}
+                {% if form.on_behalf_of.errors %}
+                    <span class="w3-text-red">
+                        <i class="fa fa-exclamation-circle"></i>
+                        {{ form.on_behalf_of.errors }}
+                    </span>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <div class="w3-section">
+            <h2><b>{% trans "Select an option" %}</b></h2>
+            {% for radio in form.option %}
+                <div class="w3-margin-bottom">
+                    <label class="w3-radio">
+                        {{ radio.tag }}
+                        <span class="w3-padding-small">{{ radio.choice_label }}</span>
+                    </label>
+                </div>
+            {% endfor %}
+            {% if form.option.errors %}
+                <span class="w3-text-red">
+                    <i class="fa fa-exclamation-circle"></i>
+                    {{ form.option.errors }}
+                </span>
+            {% endif %}
+        </div>
+
+        <div class="button-container">
+            <a href="{% url 'assemblies:assembly_detail' assembly.id %}">
+                <button type="button" class="custom-grey-button">{% trans "Cancel" %}</button>
+            </a>
+            <button type="submit" class="custom-button">{% trans "Submit vote" %}</button>
+        </div>
+    </form>
+{% endblock %}

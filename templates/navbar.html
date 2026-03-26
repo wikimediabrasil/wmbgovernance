@@ -1,0 +1,35 @@
+{% load static %}
+{% load i18n %}
+
+<nav class="nav_wrapper">
+    <div class="nav_section">
+        <div class="nav_subsection">
+            <a href="{% url 'accounts:index' %}" aria-label="{% trans 'Homepage' %}">
+                <img class="nav_logo" src="{% static 'images/logo.svg' %}" alt="{% trans "Logo for the project" %}">
+            </a>
+        </div>
+        <div class="nav_separator"></div>
+        <div class="nav_subsection">
+            {% include 'i18n.html' %}
+        </div>
+        <div class="nav_separator"></div>
+    </div>
+    <div class="nav_section nav_bottom">
+        <div class="nav_separator"></div>
+        {% if not user.is_authenticated %}
+            <div class="nav_subsection">
+                <a href="{% url 'social:begin' 'mediawiki' %}" aria-label="{% trans 'Login' %}">
+                    <i class="nav_icon fa-solid fa-right-to-bracket"></i>
+                    <span class="nav_title">{% trans "Login" %}</span>
+                </a>
+            </div>
+        {% else %}
+            <div class="nav_subsection">
+                <a href="{% url 'accounts:logout' %}" aria-label="{% trans 'Logout' %}">
+                    <i class="nav_icon fa-solid fa-right-from-bracket"></i>
+                    <span class="nav_title">{% trans "Logout" %}</span>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</nav>
