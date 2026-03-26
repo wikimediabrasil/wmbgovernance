@@ -39,7 +39,7 @@ class DefaultPeriod(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE, related_name='default_periods')
     start_date = models.DateField()
     end_date = models.DateField()
-    reason = EncryptedCharField(blank=True)
+    reason = EncryptedCharField(max_length=2000, blank=True)
 
     class Meta:
         verbose_name = _('Default Period')

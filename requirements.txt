@@ -2,3 +2,4 @@ Django~=5.2.12
 social-auth-app-django
 django-encrypted-model-fields
 dotenv
+mysqlclient

@@ -66,7 +66,7 @@ class Question(models.Model):
     ]
 
     agenda = models.ForeignKey(Agenda, on_delete=models.CASCADE, related_name='questions')
-    text = EncryptedCharField(_("Text"), help_text=_("Question text."))
+    text = EncryptedCharField(_("Text"), max_length=5000, help_text=_("Question text."))
     order = models.PositiveIntegerField(_("Order"), default=0, help_text=_("Order of the question."))
     status = models.CharField(_("Status"), max_length=10, choices=STATUS_CHOICES, default="pending", help_text=_("Status of the question."))
     option_set = models.ForeignKey(DecisionOptionSet,on_delete=models.PROTECT, related_name='questions')

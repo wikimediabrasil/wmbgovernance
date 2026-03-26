@@ -17,7 +17,7 @@ class AuditEntry(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
     action = models.CharField(max_length=32, choices=ACTION_CHOICES)
     actor = EncryptedCharField(max_length=255)
-    payload = EncryptedCharField()
+    payload = EncryptedCharField(max_length=5000)
     previous_hash = models.CharField(max_length=64)
     entry_hash = models.CharField(max_length=64, unique=True)
 
