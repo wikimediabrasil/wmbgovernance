@@ -3,3 +3,4 @@ social-auth-app-django
 django-encrypted-model-fields
 dotenv
 mysqlclient
+whitenoise
