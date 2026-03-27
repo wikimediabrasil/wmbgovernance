@@ -4,6 +4,8 @@ from unittest.mock import MagicMock
 from social_core.exceptions import AuthForbidden
 from accounts.pipeline import check_allowed_username, get_username, link_member
 from members.models import Member
+from unittest.mock import patch
+
 
 User = get_user_model()
 
@@ -79,3 +81,49 @@ class LinkMemberTest(TestCase):
         link_member(strategy=MagicMock(), details={}, user=user2)
         member.refresh_from_db()
         self.assertEqual(member.user, user1)
+
+
+class LogLoginTest(TestCase):
+    @patch("accounts.pipeline.AuditEntry.log")
+    def test_does_nothing_if_user_none(self, mock_log):
+        from accounts.pipeline import log_login
+
+        log_login(strategy=MagicMock(), details={}, user=None)
+
+        mock_log.assert_not_called()
+
+    @patch("accounts.pipeline.AuditEntry.log")
+    def test_logs_with_username(self, mock_log):
+        from accounts.pipeline import log_login
+
+        user = User.objects.create_user(username="TestUser", password="pass")
+
+        log_login(
+            strategy=MagicMock(),
+            details={"username": "WikiUser"},
+            user=user
+        )
+
+        mock_log.assert_called_once_with(
+            action="user_login",
+            actor=str(user),
+            payload={"wiki_username": "WikiUser"},
+        )
+
+    @patch("accounts.pipeline.AuditEntry.log")
+    def test_logs_without_username(self, mock_log):
+        from accounts.pipeline import log_login
+
+        user = User.objects.create_user(username="TestUser", password="pass")
+
+        log_login(
+            strategy=MagicMock(),
+            details={},  # no username
+            user=user
+        )
+
+        mock_log.assert_called_once_with(
+            action="user_login",
+            actor=str(user),
+            payload={"wiki_username": ""},
+        )

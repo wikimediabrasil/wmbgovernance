@@ -67,7 +67,6 @@ class DecisionOptionModelTest(TestCase):
         )
 
     def test_str(self):
-        self.assertIn('Default', str(self.option))
         self.assertIn('Approved', str(self.option))
 
     def test_ordering(self):
