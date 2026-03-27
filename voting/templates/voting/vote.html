@@ -16,20 +16,32 @@
         {% csrf_token %}
         {% if form.on_behalf_of %}
             <div class="w3-section">
-                <p><b>{{ form.on_behalf_of.label }}</b></p>
-                {% for radio in form.on_behalf_of %}
-                    <div class="w3-margin-bottom">
-                        <label class="w3-radio">
-                            {{ radio.tag }}
-                            <span class="w3-padding-small">{{ radio.choice_label }}</span>
-                        </label>
-                    </div>
-                {% endfor %}
-                {% if form.on_behalf_of.errors %}
-                    <span class="w3-text-red">
-                        <i class="fa fa-exclamation-circle"></i>
-                        {{ form.on_behalf_of.errors }}
-                    </span>
+                {% if form.fields.on_behalf_of.widget.input_type == 'hidden' %}
+                    {{ form.on_behalf_of }}
+                    <p>
+                        <b>{% trans "Voting on behalf of:" %}</b>
+                        {% for value, label in form.fields.on_behalf_of.choices %}
+                            {% if value|stringformat:"s" == form.initial.on_behalf_of|stringformat:"s" %}
+                                {{ label }}
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+                {% else %}
+                    <p><b>{{ form.on_behalf_of.label }}</b></p>
+                    {% for radio in form.on_behalf_of %}
+                        <div class="w3-margin-bottom">
+                            <label class="w3-radio">
+                                {{ radio.tag }}
+                                <span class="w3-padding-small">{{ radio.choice_label }}</span>
+                            </label>
+                        </div>
+                    {% endfor %}
+                    {% if form.on_behalf_of.errors %}
+                        <span class="w3-text-red">
+                    <i class="fa fa-exclamation-circle"></i>
+                    {{ form.on_behalf_of.errors }}
+                </span>
+                    {% endif %}
                 {% endif %}
             </div>
         {% endif %}

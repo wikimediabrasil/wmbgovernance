@@ -2,7 +2,7 @@ import json
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from .models import Assembly, Agenda, Question
-from voting.models import Vote
+from voting.models import Vote, Proxy
 from django.contrib.admin.views.decorators import staff_member_required
 from auditlog.utils import verify_chain
 from django.http import HttpResponse
@@ -21,6 +21,10 @@ def assembly_detail(request, assembly_id):
     agendas = assembly.agendas.prefetch_related('questions').all()
     member = request.user.member
 
+    proxy_as_grantee = Proxy.objects.filter(assembly=assembly, grantee=member).first()
+    proxy_as_grantor = Proxy.objects.filter(assembly=assembly, grantor=member).first()
+
+
     voted_question_ids = set(
         Vote.objects.filter(
             on_behalf_of=member,
@@ -28,10 +32,42 @@ def assembly_detail(request, assembly_id):
         ).values_list('question_id', flat=True)
     )
 
+    proxy_voted_question_ids = set()
+    if proxy_as_grantee:
+        proxy_voted_question_ids = set(
+            Vote.objects.filter(
+                on_behalf_of=proxy_as_grantee.grantor,
+                question__agenda__assembly=assembly
+            ).values_list('question_id', flat=True)
+        )
+
+    grantor_voted_question_ids = set()
+    if proxy_as_grantor:
+        grantor_voted_question_ids = set(
+            Vote.objects.filter(
+                on_behalf_of=member,
+                question__agenda__assembly=assembly
+            ).values_list('question_id', flat=True)
+        )
+
+    grantee_voted_for_me_question_ids = set()
+    if proxy_as_grantor:
+        grantee_voted_for_me_question_ids = set(
+            Vote.objects.filter(
+                on_behalf_of=member,
+                proxy=proxy_as_grantor,
+                question__agenda__assembly=assembly
+            ).values_list('question_id', flat=True)
+        )
     return render(request, 'assemblies/assembly_detail.html', {
         'assembly': assembly,
         'agendas': agendas,
         'voted_question_ids': voted_question_ids,
+        'proxy_grantor_voted_question_ids': proxy_voted_question_ids,  # renomeado
+        'grantee_voted_for_me_question_ids': grantee_voted_for_me_question_ids,
+        'proxy_as_grantee': proxy_as_grantee,
+        'proxy_as_grantor': proxy_as_grantor,
+        'member': member,
     })
 
 

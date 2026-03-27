@@ -14,6 +14,7 @@ class VoteForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.member = kwargs.pop('member', None)
         self.question = kwargs.pop('question', None)
+        self.forced_on_behalf_of = kwargs.pop('forced_on_behalf_of', None)
 
         super().__init__(*args, **kwargs)
 
@@ -34,21 +35,33 @@ class VoteForm(forms.ModelForm):
         ).first()
 
         if self.proxy:
-            if self.instance.pk and self.instance.on_behalf_of_id:
-                initial_behalf = str(self.instance.on_behalf_of_id)
+            if self.forced_on_behalf_of is not None:
+                self.fields['on_behalf_of'] = forms.ChoiceField(
+                    label=_('Voting on behalf of'),
+                    choices=[
+                        (self.member.pk, _('Myself (%(name)s)') % {'name': self.member}),
+                        (self.proxy.grantor.pk, _('On behalf of %(name)s') % {'name': self.proxy.grantor}),
+                    ],
+                    widget=forms.HiddenInput(),
+                    initial=str(self.forced_on_behalf_of),
+                )
+                self.initial['on_behalf_of'] = str(self.forced_on_behalf_of)
             else:
-                initial_behalf = str(self.member.pk)
+                if self.instance.pk and self.instance.on_behalf_of_id:
+                    initial_behalf = str(self.instance.on_behalf_of_id)
+                else:
+                    initial_behalf = str(self.member.pk)
 
-            self.fields['on_behalf_of'] = forms.ChoiceField(
-                label=_('Voting on behalf of'),
-                choices=[
-                    (self.member.pk, _('Myself (%(name)s)') % {'name': self.member}),
-                    (self.proxy.grantor.pk, _('On behalf of %(name)s') % {'name': self.proxy.grantor}),
-                ],
-                widget=forms.RadioSelect(),
-                initial=initial_behalf,
-            )
-            self.initial['on_behalf_of'] = initial_behalf
+                self.fields['on_behalf_of'] = forms.ChoiceField(
+                    label=_('Voting on behalf of'),
+                    choices=[
+                        (self.member.pk, _('Myself (%(name)s)') % {'name': self.member}),
+                        (self.proxy.grantor.pk, _('On behalf of %(name)s') % {'name': self.proxy.grantor}),
+                    ],
+                    widget=forms.RadioSelect(),
+                    initial=initial_behalf,
+                )
+                self.initial['on_behalf_of'] = initial_behalf
 
     def save(self, commit=True):
         vote = super().save(commit=False)

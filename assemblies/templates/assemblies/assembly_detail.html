@@ -47,23 +47,57 @@
                     {% endif %}
                     <div class="button-container">
                         {% if question.status == 'open' %}
-                            {% if question.id in voted_question_ids %}
-                                <a href="{% url 'voting:edit_vote' assembly.id question.id %}">
-                                    <button class="custom-blue-button">{% trans "Edit my vote" %}</button>
-                                </a>
+
+                            {% if proxy_as_grantee %}
+                                {% if question.id not in voted_question_ids or question.id not in proxy_grantor_voted_question_ids %}
+                                    <a href="{% url 'voting:vote' assembly.id question.id %}">
+                                        <button class="custom-button">{% trans "Vote" %}</button>
+                                    </a>
+                                {% endif %}
+                                {% if question.id in voted_question_ids %}
+                                    <a href="{% url 'voting:edit_vote' assembly.id question.id %}?behalf={{ member.pk }}">
+                                        <button class="custom-blue-button">{% trans "Edit my vote" %}</button>
+                                    </a>
+                                {% endif %}
+                                {% if question.id in proxy_grantor_voted_question_ids %}
+                                    <a href="{% url 'voting:edit_vote' assembly.id question.id %}?behalf={{ proxy_as_grantee.grantor.pk }}">
+                                        <button class="custom-blue-button">{% trans "Edit vote of" %} {{ proxy_as_grantee.grantor }}</button>
+                                    </a>
+                                {% endif %}
+
+                            {% elif proxy_as_grantor %}
+                                {% if question.id in grantee_voted_for_me_question_ids or question.id in voted_question_ids %}
+                                    <a href="{% url 'voting:edit_vote' assembly.id question.id %}?behalf={{ member.pk }}">
+                                        <button class="custom-blue-button">{% trans "Edit my vote" %}</button>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'voting:vote' assembly.id question.id %}">
+                                        <button class="custom-button">{% trans "Vote" %}</button>
+                                    </a>
+                                {% endif %}
+
                             {% else %}
-                                <a href="{% url 'voting:vote' assembly.id question.id %}">
-                                    <button class="custom-button">{% trans "Vote" %}</button>
-                                </a>
+                                {% if question.id in voted_question_ids %}
+                                    <a href="{% url 'voting:edit_vote' assembly.id question.id %}?behalf={{ member.pk }}">
+                                        <button class="custom-blue-button">{% trans "Edit my vote" %}</button>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'voting:vote' assembly.id question.id %}">
+                                        <button class="custom-button">{% trans "Vote" %}</button>
+                                    </a>
+                                {% endif %}
                             {% endif %}
+
                             <a href="{% url 'voting:results' assembly.id question.id %}">
                                 <button class="custom-button">{% trans "Results" %}</button>
                             </a>
+
                         {% elif question.status == 'closed' %}
                             <button class="custom-grey-button" disabled>{% trans "Already voted" %}</button>
                             <a href="{% url 'voting:results' assembly.id question.id %}">
                                 <button class="custom-button">{% trans "Results" %}</button>
                             </a>
+
                         {% else %}
                             <button class="custom-grey-button"
                                     disabled>{% trans "Voting has not started yet" %}</button>
