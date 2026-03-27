@@ -12,6 +12,11 @@
 {% block banner %}{% endblock %}
 {% block content %}
     <h1>{{ question.text }}</h1>
+    {% if question.description %}
+        <div class="w3-section">
+            <p>{{ question.description|linebreaksbr }}</p>
+        </div>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         {% if form.on_behalf_of %}

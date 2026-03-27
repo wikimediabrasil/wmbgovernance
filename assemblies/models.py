@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from encrypted_model_fields.fields import EncryptedCharField
+from encrypted_model_fields.fields import EncryptedCharField, EncryptedTextField
 
 
 class Assembly(models.Model):
@@ -67,6 +67,7 @@ class Question(models.Model):
 
     agenda = models.ForeignKey(Agenda, on_delete=models.CASCADE, related_name='questions')
     text = EncryptedCharField(_("Text"), max_length=5000, help_text=_("Question text."))
+    description =EncryptedTextField(_("Text"), max_length=5000,null=True, blank=True, help_text=_("Question helper."))
     order = models.PositiveIntegerField(_("Order"), default=0, help_text=_("Order of the question."))
     status = models.CharField(_("Status"), max_length=10, choices=STATUS_CHOICES, default="pending", help_text=_("Status of the question."))
     option_set = models.ForeignKey(DecisionOptionSet,on_delete=models.PROTECT, related_name='questions')
