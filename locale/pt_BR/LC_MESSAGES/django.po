@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 19:39-0300\n"
+"POT-Creation-Date: 2026-03-27 20:29-0300\n"
 "PO-Revision-Date: 2026-03-26 04:12-0300\n"
 "Last-Translator: ÉDER PORTO <EDER.PORTO@WMNOBRASIL.ORG>\n"
 "Language-Team: PT-BR <LL@li.org>\n"
@@ -128,6 +128,7 @@ msgstr "Página inicial"
 #: .\assemblies\templates\assemblies\assembly_detail.html:7
 #: .\assemblies\templates\assemblies\assembly_list.html:7
 #: .\voting\templates\voting\change_vote.html:7
+#: .\voting\templates\voting\dashboard.html:9
 #: .\voting\templates\voting\results.html:7
 #: .\voting\templates\voting\vote.html:7
 msgid "Home"
@@ -156,6 +157,7 @@ msgstr "Listar assembleias"
 #: .\assemblies\templates\assemblies\assembly_list.html:8
 #: .\assemblies\templates\assemblies\assembly_list.html:12
 #: .\voting\templates\voting\change_vote.html:8
+#: .\voting\templates\voting\dashboard.html:10
 #: .\voting\templates\voting\results.html:8
 #: .\voting\templates\voting\vote.html:8
 msgid "Assemblies"
@@ -310,6 +312,7 @@ msgstr "Aberta"
 
 #: .\assemblies\models.py:74 .\assemblies\models.py:84
 #: .\assemblies\templates\assemblies\assembly_detail.html:35
+#: .\voting\templates\voting\dashboard.html:29
 msgid "Closed"
 msgstr "Encerrada"
 
@@ -378,10 +381,12 @@ msgid "Attendances"
 msgstr "Presenças"
 
 #: .\assemblies\templates\assemblies\assembly_detail.html:29
+#: .\voting\templates\voting\dashboard.html:25
 msgid "Pending"
 msgstr "Pendente"
 
 #: .\assemblies\templates\assemblies\assembly_detail.html:32
+#: .\voting\templates\voting\dashboard.html:27
 msgid "Open"
 msgstr "Aberta"
 
@@ -639,24 +644,66 @@ msgstr "Altere sua opção"
 msgid "Update vote"
 msgstr "Atualizar voto"
 
-#: .\voting\templates\voting\results.html:29
-msgid "Results are live and update every 10 seconds."
-msgstr "Os resultados são em tempo real e atualizados a cada 10 segundos."
+#: .\voting\templates\voting\dashboard.html:4
+#: .\voting\templates\voting\dashboard.html:12
+#: .\voting\templates\voting\dashboard.html:14
+msgid "Dashboard"
+msgstr "Painel de bordo"
 
+#: .\voting\templates\voting\dashboard.html:34
 #: .\voting\templates\voting\results.html:34
 msgid "Total votes:"
 msgstr "Total de votos:"
 
-#: .\voting\templates\voting\results.html:35
-msgid "Total senior votes:"
+#: .\voting\templates\voting\dashboard.html:35
+msgid "Senior votes:"
 msgstr "Total de votos seniores:"
 
+#: .\voting\templates\voting\dashboard.html:43
+#, python-format
+msgid "excluded from %%"
+msgstr "excluído do cálculo de porcentagem"
+
+#: .\voting\templates\voting\dashboard.html:49
+#: .\voting\templates\voting\dashboard.html:50
+#: .\voting\templates\voting\dashboard.html:54
+#: .\voting\templates\voting\dashboard.html:56
 #: .\voting\templates\voting\results.html:44
 #: .\voting\templates\voting\results.html:48
 #: .\voting\templates\voting\results.html:54
 #: .\voting\templates\voting\results.html:58
 msgid "votes"
 msgstr "votos"
+
+#: .\voting\templates\voting\dashboard.html:50
+#: .\voting\templates\voting\dashboard.html:56
+msgid "Senior:"
+msgstr "Sênior:"
+
+#: .\voting\templates\voting\dashboard.html:71
+msgid "Full results"
+msgstr "Resultados"
+
+#: .\voting\templates\voting\dashboard.html:75
+msgid "No questions in this agenda."
+msgstr "Não há perguntas para este item da pauta."
+
+#: .\voting\templates\voting\dashboard.html:79
+msgid "No agendas found for this assembly."
+msgstr "Não há itens de pauta para esta assembleia."
+
+#: .\voting\templates\voting\dashboard.html:84
+#: .\voting\templates\voting\results.html:112
+msgid "Back to assembly"
+msgstr "Voltar à pauta"
+
+#: .\voting\templates\voting\results.html:29
+msgid "Results are live and update every 10 seconds."
+msgstr "Os resultados são em tempo real e atualizados a cada 10 segundos."
+
+#: .\voting\templates\voting\results.html:35
+msgid "Total senior votes:"
+msgstr "Total de votos seniores:"
 
 #: .\voting\templates\voting\results.html:44
 #: .\voting\templates\voting\results.html:48
@@ -695,10 +742,6 @@ msgstr "Votado em"
 #: .\voting\templates\voting\results.html:103
 msgid "No votes yet."
 msgstr "Nenhum voto ainda."
-
-#: .\voting\templates\voting\results.html:112
-msgid "Back to assembly"
-msgstr "Voltar à pauta"
 
 #: .\voting\templates\voting\vote.html:55
 msgid "Select an option"

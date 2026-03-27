@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load i18n l10n %}
+
+{% block title %}{% trans "Dashboard" %} — {{ assembly.title }}{% endblock %}
+
+{% block main_content %}
+    <main>
+        <div class="breadcrumb">
+            <a href="{% url 'accounts:index' %}">{% trans "Home" %}</a> &rsaquo;
+            <a href="{% url 'assemblies:assembly_list' %}">{% trans "Assemblies" %}</a> &rsaquo;
+            <a href="{% url 'assemblies:assembly_detail' assembly.id %}">{{ assembly.title }}</a> &rsaquo;
+            {% trans "Dashboard" %}
+        </div>
+        <h1>{{ assembly.title }} — {% trans "Dashboard" %}</h1>
+
+        {% for agenda_data in agendas_data %}
+            <div class="w3-section">
+                <h2>{{ agenda_data.agenda.title }}</h2>
+
+                {% for q in agenda_data.questions %}
+                    <div class="w3-card w3-padding w3-margin-bottom">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h4 style="margin: 0;">{{ q.question.text }}</h4>
+                            {% if q.question.status == 'pending' %}
+                                <span class="w3-tag" style="background-color: var(--neutral-bg); color: var(--button-text)">{% trans "Pending" %}</span>
+                            {% elif q.question.status == 'open' %}
+                                <span class="w3-tag" style="background-color: var(--progressive-bg); color: var(--button-text)">{% trans "Open" %}</span>
+                            {% elif q.question.status == 'closed' %}
+                                <span class="w3-tag" style="background-color: var(--destructive-bg); color: var(--button-text)">{% trans "Closed" %}</span>
+                            {% endif %}
+                        </div>
+
+                        <p class="w3-small" style="margin: 4px 0 12px;">
+                            <b>{% trans "Total votes:" %}</b> {{ q.total_votes }} &nbsp;|&nbsp;
+                            <b>{% trans "Senior votes:" %}</b> {{ q.total_senior_votes }}
+                        </p>
+
+                        {% for result in q.results_data %}
+                            <div class="w3-margin-bottom">
+                                <p style="margin-bottom: 2px;">
+                                    <b>{{ result.option.label }}</b>
+                                    {% if result.is_abstention %}
+                                        <span class="w3-small w3-text-grey">({% trans "excluded from %" %})</span>
+                                    {% endif %}
+                                </p>
+
+                                {% if result.is_abstention %}
+                                    <p class="w3-small">
+                                        {{ result.count }} {% trans "votes" %} &nbsp;|&nbsp;
+                                        {% trans "Senior:" %} {{ result.senior_count|default:0 }} {% trans "votes" %}
+                                    </p>
+                                {% else %}
+                                    <p class="w3-small" style="margin-bottom: 2px;">
+                                        <span style="color: var(--confirm-iv);">{{ result.count }} {% trans "votes" %} ({{ result.percentage|unlocalize }}%)</span>
+                                        &nbsp;/&nbsp;
+                                        <span style="color: var(--progressive-iv);">{% trans "Senior:" %} {{ result.senior_count|default:0 }} {% trans "votes" %} ({{ result.senior_percentage|unlocalize }}%)</span>
+                                    </p>
+                                    <div style="display: flex; height: 20px; border-radius: 4px; overflow: hidden;" class="w3-margin-bottom">
+                                        <div style="width: {{ result.percentage|unlocalize }}%; background-color: var(--confirm-iv);"></div>
+                                        <div style="flex: 1; background-color: var(--color-2);"></div>
+                                    </div>
+                                    <div style="display: flex; height: 12px; border-radius: 4px; overflow: hidden;">
+                                        <div style="width: {{ result.senior_percentage|unlocalize }}%; background-color: var(--progressive-iv);"></div>
+                                        <div style="flex: 1; background-color: var(--color-2);"></div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+
+                        <a href="{% url 'voting:results' assembly.id q.question.id %}">
+                            <button class="custom-button w3-small">{% trans "Full results" %}</button>
+                        </a>
+                    </div>
+                {% empty %}
+                    <p>{% trans "No questions in this agenda." %}</p>
+                {% endfor %}
+            </div>
+        {% empty %}
+            <p>{% trans "No agendas found for this assembly." %}</p>
+        {% endfor %}
+
+        <div class="button-container" style="max-width: unset;">
+            <a href="{% url 'assemblies:assembly_detail' assembly.id %}">
+                <button class="custom-grey-button">{% trans "Back to assembly" %}</button>
+            </a>
+        </div>
+    </main>
+{% endblock %}
