@@ -234,6 +234,10 @@ def results(request, assembly_id, question_id):
     options = question.option_set.options.all()
     total_votes = question.votes.count()
 
+    abstention_option = question.option_set.abstention_option
+    votes_for_percentage = question.votes.exclude(option=abstention_option) if abstention_option else question.votes
+    total_for_percentage = votes_for_percentage.count()
+
     senior_member_pks = MembershipPeriod.objects.filter(
         membership_type='senior',
         start_date__lte=date.today(),
@@ -247,18 +251,29 @@ def results(request, assembly_id, question_id):
     )
     total_senior_votes = senior_votes_qs.count()
 
+    senior_votes_for_percentage = senior_votes_qs.exclude(option=abstention_option) if abstention_option else senior_votes_qs
+    total_senior_for_percentage = senior_votes_for_percentage.count()
+
     results_data = []
     for option in options:
         count = question.votes.filter(option=option).count()
         senior_count = senior_votes_qs.filter(option=option).count()
-        percentage = round((count / total_votes * 100), 1) if total_votes > 0 else 0
-        senior_percentage = round((senior_count / total_senior_votes * 100), 1) if total_senior_votes > 0 else 0
+        is_abstention = abstention_option and option.pk == abstention_option.pk
+
+        percentage = None if is_abstention else (
+            round((count / total_for_percentage * 100), 1) if total_for_percentage > 0 else 0
+        )
+        senior_percentage = None if is_abstention else (
+            round((senior_count / total_senior_for_percentage * 100), 1) if total_senior_for_percentage > 0 else 0
+        )
+
         results_data.append({
             'option': option,
             'count': count,
             'percentage': percentage,
             'senior_count': senior_count,
             'senior_percentage': senior_percentage,
+            'is_abstention': is_abstention,
         })
 
     votes = Vote.objects.filter(question=question).select_related(

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 15:21-0300\n"
+"POT-Creation-Date: 2026-03-27 19:39-0300\n"
 "PO-Revision-Date: 2026-03-26 04:12-0300\n"
 "Last-Translator: ÉDER PORTO <EDER.PORTO@WMNOBRASIL.ORG>\n"
 "Language-Team: PT-BR <LL@li.org>\n"
@@ -195,7 +195,7 @@ msgstr "Informações pessoais"
 
 #: .\accounts\templates\accounts\profile.html:37
 #: .\voting\templates\voting\change_vote.html:74
-#: .\voting\templates\voting\vote.html:69
+#: .\voting\templates\voting\vote.html:74
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -236,8 +236,8 @@ msgstr "%(title)s (%(scheduled_at)s)"
 msgid "Title of the agenda item."
 msgstr "Título do item da pauta."
 
-#: .\assemblies\models.py:24 .\assemblies\models.py:50
-#: .\assemblies\models.py:70
+#: .\assemblies\models.py:24 .\assemblies\models.py:59
+#: .\assemblies\models.py:80
 msgid "Order"
 msgstr "Ordem"
 
@@ -261,104 +261,119 @@ msgstr "Nome do conjunto de opções de decisão"
 msgid "Description of the decision option set."
 msgstr "Descrição do conjunto de opções de decisão."
 
-#: .\assemblies\models.py:40
+#: .\assemblies\models.py:44
+msgid "Abstention option"
+msgstr "Opção de abstenção"
+
+#: .\assemblies\models.py:45
+msgid ""
+"The option that represents abstention and will be excluded from percentage "
+"calculations."
+msgstr ""
+"A opção que representa abstenção e será excluída dos cálculos de porcentagem."
+
+#: .\assemblies\models.py:49
 msgid "Decision option set"
 msgstr "Conjunto de opções de decisão"
 
-#: .\assemblies\models.py:41
+#: .\assemblies\models.py:50
 msgid "Decision option sets"
 msgstr "Conjuntos de opções de decisão"
 
-#: .\assemblies\models.py:49
+#: .\assemblies\models.py:58
 msgid "Label"
 msgstr "Rótulo"
 
-#: .\assemblies\models.py:49
+#: .\assemblies\models.py:58
 msgid "label for this option"
 msgstr "rótulo para esta opção"
 
-#: .\assemblies\models.py:50
+#: .\assemblies\models.py:59
 msgid "Order of the option"
 msgstr "Ordem da opção"
 
-#: .\assemblies\models.py:53
+#: .\assemblies\models.py:62
 msgid "Decision option"
 msgstr "Opção de decisão"
 
-#: .\assemblies\models.py:54
+#: .\assemblies\models.py:63
 msgid "Decision options"
 msgstr "Opções de decisão"
 
-#: .\assemblies\models.py:63
+#: .\assemblies\models.py:72
 msgid "Waiting"
 msgstr "Aguardando"
 
-#: .\assemblies\models.py:64 .\assemblies\models.py:73
+#: .\assemblies\models.py:73 .\assemblies\models.py:83
 msgid "Opened"
 msgstr "Aberta"
 
-#: .\assemblies\models.py:65 .\assemblies\models.py:74
+#: .\assemblies\models.py:74 .\assemblies\models.py:84
 #: .\assemblies\templates\assemblies\assembly_detail.html:35
 msgid "Closed"
 msgstr "Encerrada"
 
-#: .\assemblies\models.py:69
+#: .\assemblies\models.py:78 .\assemblies\models.py:79
 msgid "Text"
 msgstr "Texto"
 
-#: .\assemblies\models.py:69
+#: .\assemblies\models.py:78
 msgid "Question text."
 msgstr "Texto da pergunta."
 
-#: .\assemblies\models.py:70
+#: .\assemblies\models.py:79
+msgid "Question helper."
+msgstr "Descrição da pergunta."
+
+#: .\assemblies\models.py:80
 msgid "Order of the question."
 msgstr "Ordem da pergunta."
 
-#: .\assemblies\models.py:71
+#: .\assemblies\models.py:81
 msgid "Status"
 msgstr "Status"
 
-#: .\assemblies\models.py:71
+#: .\assemblies\models.py:81
 msgid "Status of the question."
 msgstr "Status da questão."
 
-#: .\assemblies\models.py:73
+#: .\assemblies\models.py:83
 msgid "When this question was opened."
 msgstr "Quando esta questão foi aberta."
 
-#: .\assemblies\models.py:74
+#: .\assemblies\models.py:84
 msgid "When this question was closed."
 msgstr "Quando esta questão foi encerrada."
 
-#: .\assemblies\models.py:77
+#: .\assemblies\models.py:87
 msgid "Question"
 msgstr "Pergunta"
 
-#: .\assemblies\models.py:78
+#: .\assemblies\models.py:88
 msgid "Questions"
 msgstr "Perguntas"
 
-#: .\assemblies\models.py:88
+#: .\assemblies\models.py:98
 msgid "Registered at"
 msgstr "Registrado(a) em"
 
-#: .\assemblies\models.py:88
+#: .\assemblies\models.py:98
 msgid "When this attendance was registered."
 msgstr "Quando esta presença foi registrada."
 
-#: .\assemblies\models.py:89
+#: .\assemblies\models.py:99
 msgid "Was it registered by an admin?"
 msgstr "Foi registrado por um(a) administrador(a)?"
 
-#: .\assemblies\models.py:89
+#: .\assemblies\models.py:99
 msgid "Whether this attendance was registered by an admin."
 msgstr "Se esta presença foi registrada por um administrador."
 
-#: .\assemblies\models.py:93
+#: .\assemblies\models.py:103
 msgid "Attendance"
 msgstr "Presença"
 
-#: .\assemblies\models.py:94
+#: .\assemblies\models.py:104
 msgid "Attendances"
 msgstr "Presenças"
 
@@ -462,8 +477,8 @@ msgstr "Registros de auditoria"
 msgid "Wiki username"
 msgstr "Nome de usuário(a) da wiki"
 
-#: .\members\models.py:12 .\voting\templates\voting\results.html:57
-#: .\voting\templates\voting\results.html:67
+#: .\members\models.py:12 .\voting\templates\voting\results.html:79
+#: .\voting\templates\voting\results.html:89
 msgid "Member"
 msgstr "Membro(a)"
 
@@ -612,7 +627,7 @@ msgid "You can change your vote below."
 msgstr "Você pode alterar seu voto abaixo."
 
 #: .\voting\templates\voting\change_vote.html:27
-#: .\voting\templates\voting\vote.html:22
+#: .\voting\templates\voting\vote.html:27
 msgid "Voting on behalf of:"
 msgstr "Votando em nome de:"
 
@@ -636,51 +651,60 @@ msgstr "Total de votos:"
 msgid "Total senior votes:"
 msgstr "Total de votos seniores:"
 
-#: .\voting\templates\voting\results.html:39
+#: .\voting\templates\voting\results.html:44
+#: .\voting\templates\voting\results.html:48
+#: .\voting\templates\voting\results.html:54
+#: .\voting\templates\voting\results.html:58
 msgid "votes"
 msgstr "votos"
 
-#: .\voting\templates\voting\results.html:39
-msgid "Senior members:"
-msgstr "Membros(as) seniores"
+#: .\voting\templates\voting\results.html:44
+#: .\voting\templates\voting\results.html:48
+msgid "excluded from percentage calculus"
+msgstr "excluído(s) dos cálculos de porcentagem"
 
-#: .\voting\templates\voting\results.html:53
+#: .\voting\templates\voting\results.html:48
+#: .\voting\templates\voting\results.html:58
+msgid "Senior members:"
+msgstr "Membros(as) seniores:"
+
+#: .\voting\templates\voting\results.html:75
 msgid "Public voting record"
 msgstr "Registro 'público' de votação"
 
-#: .\voting\templates\voting\results.html:58
-#: .\voting\templates\voting\results.html:68
+#: .\voting\templates\voting\results.html:80
+#: .\voting\templates\voting\results.html:90
 msgid "Voted for"
 msgstr "Votou por"
 
-#: .\voting\templates\voting\results.html:59
-#: .\voting\templates\voting\results.html:69
+#: .\voting\templates\voting\results.html:81
+#: .\voting\templates\voting\results.html:91
 msgid "Option"
 msgstr "Opção"
 
-#: .\voting\templates\voting\results.html:60
-#: .\voting\templates\voting\results.html:70
+#: .\voting\templates\voting\results.html:82
+#: .\voting\templates\voting\results.html:92
 msgid "By proxy?"
 msgstr "Por procuração?"
 
-#: .\voting\templates\voting\results.html:61
-#: .\voting\templates\voting\results.html:77
+#: .\voting\templates\voting\results.html:83
+#: .\voting\templates\voting\results.html:99
 msgid "Cast at"
 msgstr "Votado em"
 
-#: .\voting\templates\voting\results.html:81
+#: .\voting\templates\voting\results.html:103
 msgid "No votes yet."
 msgstr "Nenhum voto ainda."
 
-#: .\voting\templates\voting\results.html:90
+#: .\voting\templates\voting\results.html:112
 msgid "Back to assembly"
 msgstr "Voltar à pauta"
 
-#: .\voting\templates\voting\vote.html:50
+#: .\voting\templates\voting\vote.html:55
 msgid "Select an option"
 msgstr "Selecione uma opção"
 
-#: .\voting\templates\voting\vote.html:71
+#: .\voting\templates\voting\vote.html:76
 msgid "Submit vote"
 msgstr "Votar"
 

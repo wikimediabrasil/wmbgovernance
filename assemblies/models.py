@@ -35,6 +35,15 @@ class Agenda(models.Model):
 class DecisionOptionSet(models.Model):
     name = models.CharField(_("Name"), max_length=100, unique=True, help_text=_("Name of the decision option set"))
     description = models.TextField(_("Description"), blank=True, help_text=_("Description of the decision option set."))
+    abstention_option = models.OneToOneField(
+        'DecisionOption',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='+',
+        verbose_name=_("Abstention option"),
+        help_text=_("The option that represents abstention and will be excluded from percentage calculations.")
+    )
 
     class Meta:
         verbose_name = _("Decision option set")

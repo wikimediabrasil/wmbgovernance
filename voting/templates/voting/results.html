@@ -33,18 +33,40 @@
 <div class="w3-section">
     <p><b>{% trans "Total votes:" %}</b> {{ total_votes }}</p>
     <p><b>{% trans "Total senior votes:" %}</b> {{ total_senior_votes }}</p>
+
     {% for result in results_data %}
         <div class="w3-margin-bottom">
             <p><b>{{ result.option.label }}</b></p>
-            <p><span style="color: var(--confirm-iv);">{{ result.count }} {% trans "votes" %} ({{ result.percentage|unlocalize }}%)</span> / <span class="w3-small" style="color: var(--progressive-iv);">{% trans "Senior members:" %} {{ result.senior_count|default:0 }} {% trans "votes" %} ({{ result.senior_percentage|unlocalize }}%)</span></p>
-            <div style="display: flex; height: 24px; border-radius: 4px; overflow: hidden;" class="w3-margin-bottom">
-                <div style="width: {{ result.percentage|unlocalize }}%; background-color: var(--confirm-iv);"></div>
-                <div style="flex: 1; background-color: var(--color-2);"></div>
-            </div>
-            <div style="display: flex; height: 16px; border-radius: 4px; overflow: hidden;">
-                <div style="width: {{ result.senior_percentage|unlocalize }}%; background-color: var(--progressive-iv);"></div>
-                <div style="flex: 1; background-color: var(--color-2);"></div>
-            </div>
+
+            {% if result.is_abstention %}
+                <p>
+                    <span style="color: var(--confirm-iv);">
+                        {{ result.count }} {% trans "votes" %} (<em>{% trans "excluded from percentage calculus" %})</em>
+                    </span>
+                    /
+                    <span class="w3-small" style="color: var(--progressive-iv);">
+                        {% trans "Senior members:" %} {{ result.senior_count|default:0 }} {% trans "votes" %} (<em>{% trans "excluded from percentage calculus" %})</em>
+                    </span>
+                </p>
+            {% else %}
+                <p>
+                    <span style="color: var(--confirm-iv);">
+                        {{ result.count }} {% trans "votes" %} ({{ result.percentage|unlocalize }}%)
+                    </span>
+                    /
+                    <span class="w3-small" style="color: var(--progressive-iv);">
+                        {% trans "Senior members:" %} {{ result.senior_count|default:0 }} {% trans "votes" %} ({{ result.senior_percentage|unlocalize }}%)
+                    </span>
+                </p>
+                <div style="display: flex; height: 24px; border-radius: 4px; overflow: hidden;" class="w3-margin-bottom">
+                    <div style="width: {{ result.percentage|unlocalize }}%; background-color: var(--confirm-iv);"></div>
+                    <div style="flex: 1; background-color: var(--color-2);"></div>
+                </div>
+                <div style="display: flex; height: 16px; border-radius: 4px; overflow: hidden;">
+                    <div style="width: {{ result.senior_percentage|unlocalize }}%; background-color: var(--progressive-iv);"></div>
+                    <div style="flex: 1; background-color: var(--color-2);"></div>
+                </div>
+            {% endif %}
         </div>
     {% endfor %}
 </div>
