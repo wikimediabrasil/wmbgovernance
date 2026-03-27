@@ -57,7 +57,7 @@
             <th>{% trans "Member" %}</th>
             <th>{% trans "Voted for" %}</th>
             <th>{% trans "Option" %}</th>
-            <th>{% trans "Proxy" %}</th>
+            <th>{% trans "By proxy?" %}</th>
             <th>{% trans "Cast at" %}</th>
         </tr>
     </thead>
@@ -67,7 +67,7 @@
                 <td data-label="{% trans 'Member' %}">{{ vote.voter }}</td>
                 <td data-label="{% trans 'Voted for' %}">{{ vote.on_behalf_of }}</td>
                 <td data-label="{% trans 'Option' %}">{{ vote.option.label }}</td>
-                <td data-label="{% trans 'Proxy' %}">
+                <td data-label="{% trans 'By proxy?' %}">
                     {% if vote.proxy %}
                         <i class="fa fa-check" style="color: var(--confirm-iv);"></i>
                     {% else %}
