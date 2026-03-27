@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme) {
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      }
+    </script>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} | WMB</title>
     <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -39,4 +45,5 @@
     {% block scripts %}{% endblock %}
 </div>
 </body>
+<script src="{% static 'js/theme.js' %}"></script>
 </html>

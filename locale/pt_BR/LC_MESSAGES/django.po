@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 14:55-0300\n"
+"POT-Creation-Date: 2026-03-27 15:21-0300\n"
 "PO-Revision-Date: 2026-03-26 04:12-0300\n"
 "Last-Translator: ÉDER PORTO <EDER.PORTO@WMNOBRASIL.ORG>\n"
 "Language-Team: PT-BR <LL@li.org>\n"
@@ -168,8 +168,8 @@ msgid "My profile"
 msgstr "Meu perfil"
 
 #: .\accounts\templates\accounts\index.html:24
-#: .\accounts\templates\accounts\index.html:25 .\templates\navbar.html:28
-#: .\templates\navbar.html:30
+#: .\accounts\templates\accounts\index.html:25 .\templates\navbar.html:36
+#: .\templates\navbar.html:38
 msgid "Logout"
 msgstr "Sair"
 
@@ -502,11 +502,11 @@ msgstr "Períodos de inadimplência"
 msgid "%(member)s — %(start_date)s to %(end_date)s"
 msgstr "%(member)s — %(start_date)s até %(end_date)s"
 
-#: .\templates\base.html:31
+#: .\templates\base.html:37
 msgid "Logo for the project"
 msgstr "Logotipo do projeto"
 
-#: .\templates\base.html:37
+#: .\templates\base.html:43
 msgid "This app was developed by Wikimedia Brasil."
 msgstr "Este aplicativo foi desenvolvido pela Wikimedia Brasil."
 
@@ -518,7 +518,19 @@ msgstr "Idioma"
 msgid "Icon for the project"
 msgstr "Ícone do projeto"
 
-#: .\templates\navbar.html:21 .\templates\navbar.html:23
+#: .\templates\navbar.html:17
+msgid "Toggle theme"
+msgstr "Alternar tema"
+
+#: .\templates\navbar.html:17
+msgid "Light mode"
+msgstr "Modo claro"
+
+#: .\templates\navbar.html:17 .\templates\navbar.html:20
+msgid "Dark mode"
+msgstr "Modo escuro"
+
+#: .\templates\navbar.html:29 .\templates\navbar.html:31
 msgid "Login"
 msgstr "Entrar"
 

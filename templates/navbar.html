@@ -13,6 +13,14 @@
             {% include 'i18n.html' %}
         </div>
         <div class="nav_separator"></div>
+        <div class="nav_subsection">
+            <a href="#" id="theme-toggle" aria-label="{% trans 'Toggle theme' %}" data-light-label="{% trans 'Light mode' %}" data-dark-label="{% trans 'Dark mode' %}">
+                <i class="nav_icon fa-solid fa-moon"></i>
+                <span class="nav_title">
+                    {% trans "Dark mode" %}
+                </span>
+            </a>
+        </div>
     </div>
     <div class="nav_section nav_bottom">
         <div class="nav_separator"></div>
